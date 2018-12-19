@@ -4,37 +4,56 @@
 #include <vector>
 using namespace std;
 
-vector<int> toVector(string line);
-bool binarySearch(const vector<int>& array, const int& findArr);
-void printVector(vector<int>& array);
+vector <int> toVector(string line);
+bool binsearch(const vector<int>& arr, const int& findarr);
+void printVector(vector<int>& arr);
 
 int main(int argc, char **argv) {
 	fstream dataSets;
 	dataSets.open(argv[1]);
 	string set;
-	int find;
+	int num;
 
 	getline(dataSets, set);
 
-	vector<int> values = toVector(set);
-	cout << "Raw Data: "; printVector(values);
-	std::sort(values.begin(), values.end());
+	vector<int> vals = toVector(set);
+	cout << "Data: "; printVector(vals);
+	std::sort(vals.begin(), vals.end());
+//changes made from here
 
-	while(find != -99){
-	cout << "what number should I look for? (Enter -99 to terminate program)" << endl;
-	cin >> find;
 
-	if(binarySearch(values,find)==true)
+	cout << "What number should I look for? (Enter -99 to terminate program)" << endl;
+	cin >> num;
+	if(binsearch(vals,num)==true)
 	{
 
-		cout << "Yes that value is in the array" << endl;
+		cout << "This value is in the array.\n" << endl;
 	}
-	else if(find == -99)
+	else if(num == -99)
+	{
+		cout <<"Program terminated" << endl;
+	}
+	else{
+		cout << "This value is not in the array.\n" << endl;
+	}
+
+	//changes end here
+
+	while(num != -99){
+	cout << "What number should I look for next? (Enter -99 to terminate program)" << endl;
+	cin >> num;
+
+	if(binsearch(vals,num)==true)
+	{
+
+		cout << "This value is in the array.\n" << endl;
+	}
+	else if(num == -99)
 	{
 		cout <<"Program terminated " << endl;
 	}
 	else{
-		cout << "not in the array " << endl;
+		cout << "This value is not in the array.\n" << endl;
 	}
 	dataSets.close();
 	}
@@ -49,24 +68,23 @@ vector<int> toVector(string line) {
 			? line.substr(line.find_first_of(" ") + 1)
 			: line;
 	} while (line.find_first_of(" ") != string::npos);
-
 	return output;
 }
 
-bool binarySearch(const vector<int>& array, const int& findArr) {
+bool binsearch(const vector<int>& arr, const int& findarr) {
   vector<int> output;
-  int highSearchIndex = array.size()-1, lowSearchIndex = 0;
-  int midSearchIndex;
+  int hsearch = arr.size()-1, lsearch = 0;
+  int msearch;
 
-  while(highSearchIndex >= lowSearchIndex) {
-    midSearchIndex = lowSearchIndex + (highSearchIndex - lowSearchIndex)/2;
+  while(hsearch >= lsearch) {
+    msearch = lsearch + (hsearch - lsearch)/2;
 
-    if(array[midSearchIndex] == findArr) return true;
+    if(arr[msearch] == findarr) return true;
 
-    if(array[midSearchIndex] > findArr) {
-      highSearchIndex = midSearchIndex - 1;
-    } else if (array[midSearchIndex] < findArr) {
-      lowSearchIndex = midSearchIndex + 1;
+    if(arr[msearch] > findarr) {
+      hsearch = msearch - 1;
+    } else if (arr[msearch] < findarr) {
+      lsearch = msearch + 1;
     } else {
        cout << "error" << endl;
     }
@@ -74,9 +92,9 @@ bool binarySearch(const vector<int>& array, const int& findArr) {
   return false;
 }
 
-void printVector(vector<int>& array) {
-  for(auto value = array.begin(); value !=array.end(); ++value) {
-    cout << *value << ' ';
+void printVector(vector<int>& arr) {
+  for(auto val = arr.begin(); val !=arr.end(); ++val) {
+    cout << *val << ' ';
   }
   cout << endl;
 }
