@@ -1,44 +1,29 @@
 #include <iostream>
-
 using namespace std;
 
-struct Node {
-	int value;
-	Node *left;
-	Node *right;
-
-	Node(int val) {
-		this->value = val;
-	}
-
-	Node(int val, Node *left, Node *right) {
-		this->value = val;
-		this->left = left;
-		this->right = right;
-	}
+struct node
+{
+  int data;
+  struct node* left;
+  struct node* right;
 };
 
-void DFS_PreOrder_traversal_recursive(const Node *entry) {
-  if (entry == nullptr) return;
-
-  cout << entry->value << " ";
-
-  DFS_PreOrder_traversal_recursive(entry->left);
-  DFS_PreOrder_traversal_recursive(entry->right);
+struct node* newNode(int idata)
+{
+  struct node* node = new struct node;
+  node->data = idata;
+  node->left = NULL;
+  node->right = NULL;
+  return node;
 }
 
-Node *generateBinaryTree() {
-	Node *root = new Node(2);
-
-	root->right = new Node(5, nullptr, new Node(9,  new Node(4), nullptr));
-	root->left = new Node(7, new Node(2), new Node(6, new Node(5), new Node(11)));
-
-	return root;
-}
-
-int main() {
-  Node *root = generateBinaryTree();
-  cout << "These are the steps in my tree: ";
-  DFS_PreOrder_traversal_recursive(root);
-  cout << endl;
+int main ()
+{
+  struct node *root = newNode(8);
+  root->left = newNode(9);
+  root->right = newNode(3);
+  cout<< "Steps in tree are as followed:\n";
+  root->left->left = newNode(272511594);
+  cout << root->left->left->data << endl;
+  return 0;
 }
