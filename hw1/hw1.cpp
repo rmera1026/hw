@@ -2,16 +2,14 @@
 using namespace std;
 
 int main() {
-    float num1;
-    float num2;
-    int operation;
-    float ans;
-    cout << "Input two operands: " << endl;
+    float num1,num2,ans;
+    int op;
+    cout << "Input two operands" << endl;
 
-    cout << "First number: ";
+    cout << "First operand: ";
     cin >> num1;
 
-    cout << "Second number: ";
+    cout << "Second operand: ";
     cin >> num2;
 
     cout << "Input operation to be used on operands" << endl;
@@ -20,15 +18,15 @@ int main() {
     cout << "3: multiply" << endl;
     cout << "4: Divide" << endl;
 
-    cin >> operation;
+    cin >> op;
 
-    if (operation == 1) {
+    if (op == 1) {
       ans = num1 + num2;
-    } else if (operation == 2) {
+    } else if (op == 2) {
       ans = num1 - num2;
-    } else if (operation == 3) {
+    } else if (op == 3) {
         ans = num1 * num2;
-    } else if (operation == 4) {
+    } else if (op == 4) {
       ans = num1 / num2;
     } else {
       cout << "Invalid entry" << endl;
