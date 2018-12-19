@@ -19,8 +19,6 @@ int main(int argc, char **argv) {
 	vector<int> vals = toVector(set);
 	cout << "Data: "; printVector(vals);
 	std::sort(vals.begin(), vals.end());
-//changes made from here
-
 
 	cout << "What number should I look for? (Enter -99 to terminate program)" << endl;
 	cin >> num;
@@ -36,8 +34,6 @@ int main(int argc, char **argv) {
 	else{
 		cout << "This value is not in the array.\n" << endl;
 	}
-
-	//changes end here
 
 	while(num != -99){
 	cout << "What number should I look for next? (Enter -99 to terminate program)" << endl;
